@@ -70,11 +70,22 @@
 
     .nav-logo {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .nav-logo-sub {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-transform: uppercase;
     }
 
     .nav-logo span { color: var(--accent); }
@@ -838,6 +849,61 @@
       .scale-item:last-child { border-bottom: none; }
     }
 
+    /* ── CONTACT FORM ──────────────────────────── */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: white;
+      outline: none;
+      transition: border-color 0.18s;
+      resize: none;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: rgba(37,87,214,0.7); }
+
+    .form-alt {
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 14px;
+    }
+
+    .form-alt a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .form-alt a:hover { color: white; }
+
     /* ── CONTACT ───────────────────────────────── */
     #contact {
       background: #0a1628;
@@ -982,7 +1048,7 @@
   <!-- ── NAV ── -->
   <nav>
     <div class="nav-inner">
-      <a class="nav-logo" href="#">Tudor<span>.</span></a>
+      <a class="nav-logo" href="#">Tudor Moldovan<span class="nav-logo-sub">QA Consultancy</span></a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#process">Process</a></li>
@@ -1126,18 +1192,20 @@
           <span class="section-tag">About me</span>
           <h2 class="section-title">Tudor Moldovan</h2>
           <p>
-            I'm an independent QA specialist with hands-on experience across mobile consumer
-            applications and precision industrial software — two very different environments,
-            both demanding a high standard of quality.
+            I've spent over 10 years in IT — the last several of them dedicated entirely to
+            software quality. In that time I've worked across mobile consumer apps, precision
+            industrial systems, fintech platforms, and everything in between.
           </p>
           <p>
-            I treat testing as a discipline, not a checklist. That means thinking like a user,
-            probing edge cases developers don't anticipate, and delivering findings that are
-            clear and immediately useful.
+            Testing, done well, is not about running scripts until the clock runs out.
+            It's about thinking — asking the questions nobody thought to ask, exploring the
+            corners developers didn't consider, and understanding a product well enough to
+            know what matters most when something breaks.
           </p>
           <p>
-            I work on a contract and project basis and welcome clients of any size — from
-            solo founders to established engineering teams.
+            I work directly with founders, engineering leads, and product teams — without
+            layers of process in the way. You get clear findings, honest assessments, and
+            reports your developers can act on the same day.
           </p>
 
           <div class="about-pills">
@@ -1368,27 +1436,26 @@
           </p>
         </div>
 
-        <div class="contact-card reveal">
-          <div class="contact-row">
-            <div class="contact-row-icon">✉️</div>
-            <div class="contact-row-info">
-              <strong>Email</strong>
-              <a href="mailto:moldovan_tudor@yahoo.com">moldovan_tudor@yahoo.com</a>
+        <form class="contact-card reveal" action="https://formspree.io/f/xvgznwpq" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-field">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" name="email" placeholder="your@email.com" required />
             </div>
           </div>
-          <div class="contact-divider"></div>
-          <div class="contact-row">
-            <div class="contact-row-icon">💼</div>
-            <div class="contact-row-info">
-              <strong>LinkedIn</strong>
-              <a href="https://www.linkedin.com/in/tudor-moldovan-2baa5688" target="_blank" rel="noopener">tudor-moldovan-2baa5688</a>
-            </div>
+          <div class="form-field">
+            <label for="fmsg">Message</label>
+            <textarea id="fmsg" name="message" rows="4" placeholder="Tell me about your project and what you need tested..." required></textarea>
           </div>
-          <div class="contact-divider"></div>
-          <a href="mailto:moldovan_tudor@yahoo.com" class="btn btn-accent" style="justify-content:center; margin-top:4px;">
-            Send me a message
-          </a>
-        </div>
+          <button type="submit" class="btn btn-accent" style="justify-content:center; width:100%; margin-top:4px;">
+            Send message
+          </button>
+          <p class="form-alt">Or reach me directly at <a href="mailto:moldovan_tudor@yahoo.com">moldovan_tudor@yahoo.com</a></p>
+        </form>
       </div>
     </div>
   </section>
