@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qa-services-plum.vercel.app/sitemap.xml
